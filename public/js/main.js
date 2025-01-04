@@ -184,6 +184,7 @@ const endCall = () => {
         const remoteUsernameLabel = document.querySelector(".remote-video .username-label");
         remoteUsernameLabel.textContent = ""; // Clear the text content
         remoteUsernameLabel.style.display = "none"; // Hide the label
+        
     }
 };
 
