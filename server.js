@@ -47,11 +47,20 @@ io.on("connection", (socket) => {
         io.to(allusers[to].id).emit("end-call", {from, to});
     });
 
-    socket.on("call-ended", caller => {
+
+    socket.on("call-ended", (caller) => {
         const [from, to] = caller;
-        io.to(allusers[from].id).emit("call-ended", caller);
-        io.to(allusers[to].id).emit("call-ended", caller);
-    })
+    
+        // Check if both users exist in the allusers object before emitting
+        if (allusers[from] && allusers[to]) {
+            io.to(allusers[from].id).emit("call-ended", caller);
+            io.to(allusers[to].id).emit("call-ended", caller);
+        } else {
+            console.error(`One or both users not found in allusers: from=${from}, to=${to}`);
+        }
+    });
+    
+    
 
     socket.on("icecandidate", candidate => {
         console.log({ candidate });

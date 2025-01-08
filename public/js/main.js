@@ -77,6 +77,7 @@ endCallBtn.addEventListener("click", () => {
     socket.emit("call-ended", caller);
 });
 
+
 // Handle socket events
 socket.on("joined", (allusers) => {
     console.log({ allusers });
