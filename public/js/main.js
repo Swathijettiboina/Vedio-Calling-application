@@ -9,6 +9,20 @@ const socket = io();
 let localStream;
 let caller = [];
 
+document.addEventListener("DOMContentLoaded", () => {
+    const captionBox = document.getElementById("caption-box");
+    const toggleCaptionBtn = document.getElementById("toggle-caption-btn");
+
+    // Toggle the visibility of the caption box
+    toggleCaptionBtn.addEventListener("click", () => {
+        if (captionBox.classList.contains("hidden")) {
+            captionBox.classList.remove("hidden");
+        } else {
+            captionBox.classList.add("hidden");
+        }
+    });
+});
+
 // Peer Connection Singleton
 const PeerConnection = (function () {
     let peerConnection;

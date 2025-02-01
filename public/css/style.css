@@ -151,7 +151,7 @@ ul li {
 #caption-box {
 	position: fixed; /* Overlay on the video */
 	bottom: 5%; /* Adjust based on your video layout */
-	left: 50%;
+	left: 60%;
 	transform: translateX(-50%);
 	width: 80%; /* Adjust the width as needed */
 	max-height: 20%; /* Limit height to avoid overflow */
@@ -174,4 +174,7 @@ ul li {
     background-color: rgba(0, 0, 0, 0.6); /* Semi-transparent background */
     border-radius: 4px;
     display: none; /* Hidden by default */
+}
+.hidden {
+    display: none;
 }
