@@ -87,8 +87,10 @@ createUserBtn.addEventListener("click", (e) => {
     }
 });
 
+// Emit call-ended event when the end call button is clicked
 endCallBtn.addEventListener("click", () => {
-    socket.emit("call-ended", caller);
+    socket.emit("call-ended", caller); // Emit the call-ended event
+    endCall(); // Call endCall to clean up the UI
 });
 
 
@@ -170,8 +172,9 @@ socket.on("end-call", ({ from, to }) => {
     endCallBtn.style.display = "block";
 });
 
+// Handle the call-ended event from the server
 socket.on("call-ended", () => {
-    endCall();
+    endCall(); // Call endCall to clean up the UI
 });
 
 // Start call method
@@ -199,7 +202,8 @@ const endCall = () => {
         const remoteUsernameLabel = document.querySelector(".remote-video .username-label");
         remoteUsernameLabel.textContent = ""; // Clear the text content
         remoteUsernameLabel.style.display = "none"; // Hide the label
-        
+        localVideo.srcObject = null; // Clear local video
+        remoteVideo.srcObject = null; // Clear remote video
     }
 };
 
